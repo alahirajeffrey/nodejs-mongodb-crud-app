@@ -74,6 +74,7 @@ router.put('/update:id', async (req, res) => {
     //validate user
     if (!req.params.id) return res.status(400).json({ message: 'Id param required...' })
 
+    // find user and update 
     try {
         const updatedUser = await User.findByIdAndUpdate(req.params.id, {
             $set: req.body
