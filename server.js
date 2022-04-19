@@ -11,7 +11,7 @@ connectDatabase()
 
 //setup app
 app.use(express.json())
-app.use('api/v1/user', userRoutes)
+app.use('/api/v1/user', userRoutes)
 
 // set port number
 const PORT = process.env.PORT || 3250
