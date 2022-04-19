@@ -34,14 +34,14 @@ router.get('/findAll', async (req, res) => {
     }
 })
 
-router.get('/findOne/:id', async (req, res) => {
+router.get('/findOne', async (req, res) => {
 
     //validate user
-    if (!req.params.id) return res.status(400).json({ message: 'Id param required...' })
+    if (!req.body.id) return res.status(400).json({ message: 'Id request required...' })
 
     try {
         //find single user
-        const user = await User.findById({ _id: req.params.id })
+        const user = await User.findById({ _id: req.body.id })
 
         return res.status(200).json(user)
 
@@ -53,11 +53,11 @@ router.get('/findOne/:id', async (req, res) => {
 router.delete('/delete', async (req, res) => {
 
     //validate user
-    if (!req.params.id) return res.status(400).json({ message: 'Id param required...' })
+    if (!req.body.id) return res.status(400).json({ message: 'Id request required...' })
 
     try {
         //delete  user
-        const result = await User.findOneAndDelete(req.params.id)
+        const result = await User.findOneAndDelete(req.body.id)
         if (result) {
             return res.status(200).json({ message: "User deleted..." })
         } else {
@@ -69,7 +69,7 @@ router.delete('/delete', async (req, res) => {
     }
 })
 
-router.put('/update', async (req, res) => {
+router.put('/update:id', async (req, res) => {
 
     //validate user
     if (!req.params.id) return res.status(400).json({ message: 'Id param required...' })
