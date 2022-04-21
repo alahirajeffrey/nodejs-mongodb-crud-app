@@ -69,7 +69,7 @@ router.delete('/delete', async (req, res) => {
     }
 })
 
-router.put('/update:id', async (req, res) => {
+router.put('/update/:id', async (req, res) => {
 
     //validate user
     if (!req.params.id) return res.status(400).json({ message: 'Id param required...' })
