@@ -4,7 +4,7 @@
   "description": "simple nodejs and mongodb crud app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha tests/**/*.js",
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
@@ -16,6 +16,9 @@
     "mongoose": "^6.0.12"
   },
   "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.2.2",
     "nodemon": "^2.0.14"
   }
 }
