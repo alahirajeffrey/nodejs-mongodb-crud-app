@@ -14,7 +14,7 @@ router.post('/register', async (req, res) => {
         const newUser = new User(req.body)
         const savedUser = await newUser.save()
 
-        return res.status(200).json(savedUser)
+        return res.status(201).json(savedUser)
 
     } catch (err) {
         return res.status(500).json(err)
@@ -34,14 +34,14 @@ router.get('/findAll', async (req, res) => {
     }
 })
 
-router.get('/findOne', async (req, res) => {
+router.get('/findOne/:id', async (req, res) => {
 
     //validate user
-    if (!req.body.id) return res.status(400).json({ message: 'Id request required...' })
+    if (!req.params.id) return res.status(400).json({ message: 'Id param required...' })
 
     try {
         //find single user
-        const user = await User.findById({ _id: req.body.id })
+        const user = await User.findById({ _id: req.params.id })
 
         return res.status(200).json(user)
 
@@ -50,14 +50,14 @@ router.get('/findOne', async (req, res) => {
     }
 })
 
-router.delete('/delete', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
 
     //validate user
-    if (!req.body.id) return res.status(400).json({ message: 'Id request required...' })
+    if (!req.params.id) return res.status(400).json({ message: 'Id param required...' })
 
     try {
         //delete  user
-        const result = await User.findOneAndDelete(req.body.id)
+        const result = await User.findOneAndDelete(req.param.id)
         if (result) {
             return res.status(200).json({ message: "User deleted..." })
         } else {
@@ -80,7 +80,7 @@ router.put('/update/:id', async (req, res) => {
             $set: req.body
         },
             { new: true })
-        return res.status(200).json(updatedUser)
+        return res.status(201).json(updatedUser)
     } catch (err) {
         return res.status(500).json(err)
     }
