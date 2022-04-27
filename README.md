@@ -3,6 +3,7 @@ This is a beginner friendly guide to using nodejs and mongodb to build restful A
 
 ## FEATURES
 - CRUD operations i.e Create, Read, Update, Delete
+- Basic unit tests for routes
 
 ## REQUIREMENTS
 - [Nodejs](https://nodejs.org/en/) is a JavaScript runtime built on Chrome's V8 JavaScript engine.
@@ -15,8 +16,8 @@ This is a beginner friendly guide to using nodejs and mongodb to build restful A
 | --- | --- | --- | --- |
 | POST | /api/v1/user/register | Register a new user | req.body.username req.body.password req.body.email |
 | GET | /api/v1/user/findAll | Get all users |  |
-| GET | /api/v1/user/findOne | Get a single user | req.body.id |
-| DELETE | /api/v1/user/delete | Delete a user | req.body.id |
+| GET | /api/v1/user/findOne/:id | Get a single user | req.params.id |
+| DELETE | /api/v1/user/delete/:id | Delete a user | req.params.id |
 | UPDATE | /api/v1/user/update/:id | Update a user | req.params.id |
 
 ## HOW TO USE
@@ -24,7 +25,7 @@ This is a beginner friendly guide to using nodejs and mongodb to build restful A
 - clone this repository using `git clone https://github.com/alahirajeffrey/nodejs-mongodb-crud-app.git`
 - Navigate to project folder and install dependencies using `npm install`
 - Create .env file and add environment variables using .env.sample as a guide
-- Open terminal and type `npm run dev` to start server in development mode or `npm run start` to start server in production mode
+- Open terminal and type `npm run dev` to start server in development mode, `npm run start` to start server in production mode or `npm run test` to run tests
 - Use postman to test endpoints
 
 ## Author
